@@ -13,7 +13,7 @@ Create a jbossas-7 application
 Add this upstream SwitchYard repo
 
     cd swyesb
-    git remote add upstream -m master git://github.com/jboss-switchyard/switchyard-openshift.git
+    git remote add upstream -m master git://github.com/eschabell/switchyard-openshift.git
     git pull -s recursive -X theirs upstream master
     git apply standalone.diff
     git add .
