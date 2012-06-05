@@ -1,43 +1,44 @@
 diff --git a/.openshift/config/standalone.xml b/.openshift/config/standalone.xml
-index 67bdc3f..a76f85e 100644
+index 67fa605..a0ebc2c 100644
 --- a/.openshift/config/standalone.xml
 +++ b/.openshift/config/standalone.xml
-@@ -23,6 +23,7 @@
-         <extension module="org.jboss.as.transactions"/>
+@@ -33,6 +33,7 @@
          <extension module="org.jboss.as.web"/>
+         <extension module="org.jboss.as.webservices"/>
          <extension module="org.jboss.as.weld"/>
-+        <extension module="org.switchyard"/>
++				<extension module="org.switchyard"/>
      </extensions>
  
-     <!--management>
-@@ -256,6 +257,22 @@
-             </virtual-server>
+     <management>
+@@ -487,6 +488,22 @@
+             </endpoint-config>
          </subsystem>
          <subsystem xmlns="urn:jboss:domain:weld:1.0"/>
-+        <subsystem xmlns="urn:jboss:domain:switchyard:1.0">
-+            <socket-binding names="switchyard-ws"/>
-+            <modules>
-+                <module identifier="org.switchyard.component.bean" implClass="org.switchyard.component.bean.deploy.BeanComponent"/>
-+                <module identifier="org.switchyard.component.soap" implClass="org.switchyard.component.soap.deploy.SOAPComponent">
-+                    <properties>
-+                        <socketAddr>$switchyard-ws</socketAddr>
-+                        <contextPath>swydws</contextPath>
-+                    </properties>
-+                </module>
-+                <module identifier="org.switchyard.component.camel" implClass="org.switchyard.component.camel.deploy.CamelComponent"/>
-+                <module identifier="org.switchyard.component.rules" implClass="org.switchyard.component.rules.deploy.RulesComponent"/>
-+                <module identifier="org.switchyard.component.bpm" implClass="org.switchyard.component.bpm.deploy.BPMComponent"/>
-+                <module identifier="org.switchyard.component.bpel" implClass="org.switchyard.component.bpel.deploy.BPELComponent"/>
-+            </modules>
-+        </subsystem>
++				<subsystem xmlns="urn:jboss:domain:switchyard:1.0">
++						<socket-binding names="switchyard-ws"/>
++						<modules>
++								<module identifier="org.switchyard.component.bean" implClass="org.switchyard.component.bean.deploy.BeanComponent"/>
++								<module identifier="org.switchyard.component.soap" implClass="org.switchyard.component.soap.deploy.SOAPComponent">
++										<properties>
++												<socketAddr>$switchyard-ws</socketAddr>
++												<contextPath>swydws</contextPath>
++								    </properties>
++								</module>
++								<module identifier="org.switchyard.component.camel" implClass="org.switchyard.component.camel.deploy.CamelComponent"/>
++								<module identifier="org.switchyard.component.rules" implClass="org.switchyard.component.rules.deploy.RulesComponent"/>
++								<module identifier="org.switchyard.component.bpm" implClass="org.switchyard.component.bpm.deploy.BPMComponent"/>
++								<module identifier="org.switchyard.component.bpel" implClass="org.switchyard.component.bpel.deploy.BPELComponent"/>
++						</modules>
++				</subsystem>
      </profile>
  
      <interfaces>
-@@ -275,6 +292,7 @@
-         <socket-binding name="remoting" port="4447"/-->
+@@ -517,8 +534,9 @@
+         <socket-binding name="remoting" port="4447"/>
          <socket-binding name="txn-recovery-environment" port="4712"/>
          <socket-binding name="txn-status-manager" port="4713"/>
-+        <socket-binding name="switchyard-ws" port="18001"/>
++				<socket-binding name="switchyard-ws" port="18001"/>
          <outbound-socket-binding name="mail-smtp">
              <remote-destination host="localhost" port="25"/>
          </outbound-socket-binding>
+     </socket-binding-group>
