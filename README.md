@@ -8,7 +8,11 @@ Create an account at http://openshift.redhat.com/
 
 Create a jbossas-7 application
 
-    rhc app create -a swyesb -t jbossas-7
+    rhc app create -a swyesb -t jbosseap-6.0
+
+Add the switchyard cartride
+
+    rhc cartridge add switchyard-0.6
 
 Add this upstream SwitchYard repo
 
