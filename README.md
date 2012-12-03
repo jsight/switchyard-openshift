@@ -33,7 +33,8 @@ Samples deployed with your application
 
 This repository will deploy a sample called switchyard-quickstart-demo-orders.war. You can
 play with the web interface to the OrderService:
-    http://swyesb-$yourdomain.rhcloud.com/switchyard-quickstart-demo-orders/home.jsf
+
+    http://swyesb-$yourdomain.rhcloud.com/switchyard-quickstart-demo-orders
 
 You can submit orders such as shown below in the SOAP message.
 
