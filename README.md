@@ -19,9 +19,6 @@ Add this upstream SwitchYard repo
     cd swyesb
     git remote add upstream -m master git://github.com/eschabell/switchyard-openshift.git
     git pull -s recursive -X theirs upstream master
-    git apply standalone.diff
-    git add .
-    git commit -m 'Added SwitchYard subsystem'
 
 Then push the repo to origin
 
@@ -34,13 +31,20 @@ That's it, you can now checkout your application at:
 Samples deployed with your application
 --------------------------------------
 
-This repository will deploy a sample called osdemo.jar binary deployment. You can
-checkout the SOAP WSDL of this sample at
+This repository will deploy a sample called switchyard-quickstart-demo-orders.war. You can
+play with the web interface to the OrderService:
+    http://swyesb-$yourdomain.rhcloud.com/switchyard-quickstart-demo-orders/home.jsf
 
-    http://swyesb-$yourdomain.rhcloud.com/swydws/OrderService?wsdl
+You can submit orders such as shown below in the SOAP message.
 
-You can test this application using your favourite SOAP client. A valid SOAP request
-is shown here:
+OpenShift does not allow external connections the range of ports it exposes: 15000 - 35530, 
+these can only be accessed via the internal IP of our instance.
+
+The internal access is done via the internal IP at:
+
+    http://swyesb-$yourdomain.rhcloud.com:18001/demo-orders/OrderService?wsdl
+
+A valid SOAP request is shown here:
 
     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
        xmlns:urn="urn:switchyard-quickstart:bean-service:1.0">
@@ -56,19 +60,6 @@ is shown here:
        </soapenv:Body>
     </soapenv:Envelope>
 
-Source development
-------------------
-
-This repository is also a barebone SwitchYard application for source development.
 Read more at the cloud link of your application from here, once it is deployed.
 
     http://swyesb-$yourdomain.rhcloud.com
-
-Remember to enable openshift profile, if you update the source files, by renaming
-the pom.xml's profile from
-
-    <id>switchyard</id>
-
-to
-
-    <id>openshift</id>
