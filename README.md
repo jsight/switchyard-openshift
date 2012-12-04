@@ -12,7 +12,7 @@ Create a jbossas-7 application
 
 Add the switchyard cartride
 
-    rhc cartridge add switchyard-0.6
+    rhc cartridge add switchyard-0.6 --app swyesb
 
 Add this upstream SwitchYard repo
 
